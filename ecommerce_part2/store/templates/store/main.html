@@ -24,7 +24,12 @@
           </ul>
           <div>
             <div class="form-inline my-2 my-lg-0">
-                       <a href="#"class="btn btn-warning">Login</a>
+                       <div>
+                <form class="form-inline my-2 my-lg-0" method="GET" action="#">
+                  <input type="text" name="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
                         
                        <a href="{% url 'cart' %}">
                          <img  id="cart-icon" src="{% static 'images/cart.png' %}">
