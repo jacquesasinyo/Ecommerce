@@ -27,6 +27,21 @@
 
             
         </div>
+	<div class="pagination">
+            <span class="step-links">
+                {% if products.has_previous %}
+                    <a class="btn btn-outline-primary" href="?page=1">&laquo; First</a>
+                    <a class="btn btn-outline-primary" href="?page={{ products.previous_page_number }}">Previous</a>
+                {% endif %}
+
+                <span class="current-page">{{ products.number }}</span>
+
+                {% if products.has_next %}
+                    <a class="btn btn-outline-primary" href="?page={{ products.next_page_number }}">Next</a>
+                    <a class="btn btn-outline-primary" href="?page={{ products.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     {% endblock content %}
 </body>
 </html>
