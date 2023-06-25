@@ -4,6 +4,7 @@ from django.http import JsonResponse
 import json
 import datetime
 from .utils import cookieCart,cartData,guestOrder
+from django.db.models import Q
 
 def store(request):
     data = cartData(request)
@@ -13,7 +14,7 @@ def store(request):
     context = {"products": products,'cartItems':cartItems}
     return render(request, 'store/store.html', context)
 
-from django.db.models import Q
+
 
 
 
