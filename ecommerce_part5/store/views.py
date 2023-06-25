@@ -5,13 +5,21 @@ import json
 import datetime
 from .utils import cookieCart,cartData,guestOrder
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 def store(request):
     data = cartData(request)
     cartItems = data['cartItems']
-        
     products = Product.objects.all()
-    context = {"products": products,'cartItems':cartItems}
+     # Configure the number of items per page
+    paginator = Paginator(products, 3)  # Assuming 10 products per page
+    
+    # Get the current page number from the request's GET parameters
+    page_number = request.GET.get('page')
+    
+    # Get the Page object for the current page number
+    page_obj = paginator.get_page(page_number)
+    context = {"products": page_obj,'cartItems':cartItems}
     return render(request, 'store/store.html', context)
 
 
